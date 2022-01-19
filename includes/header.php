@@ -11,6 +11,7 @@
 	<style>
 		body{
 			color: white!important;
+			background-color: #333;
 		}
 
 		.table{

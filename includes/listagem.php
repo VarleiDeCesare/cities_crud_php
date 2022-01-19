@@ -20,15 +20,15 @@
 						<tr>
 							<td><h4><?= $cidade->name ?></h4></td>
 							<td><h4><?= $cidade->uf ?></h4></td>
-							<td><h4><?= date('d/m/Y', strtotime($cidade->created_at)) ?></h4></td>
-							<td><h4><?= $cidade->updated_at ? date('d/m/Y à\s h\h m\m s\s', strtotime($cidade->updated_at)) : '' ?></h4></td>
+							<td><h4><?= date('d/m/Y à\s h\h m\m', strtotime($cidade->created_at)) ?></h4></td>
+							<td><h4><?= $cidade->updated_at ? date('d/m/Y à\s h\h m\m', strtotime($cidade->updated_at)) : '' ?></h4></td>
 							<td class="text-center">
-								<a href="editar.php?id=<?= $cidade->id ?>">
+								<a href="/app/services/editar.php?id=<?= $cidade->id ?>">
 									<button class="btn btn-primary">
 										Editar
 									</button>
 								</a>
-								<a href="excluir.php?id=<?= $cidade->id ?>">
+								<a href="/app/services/excluir.php?id=<?= $cidade->id ?>">
 									<button class="btn btn-danger">
 										Excluir
 									</button>
@@ -50,7 +50,7 @@
 		}
 		?>
 		<div class="text-center">
-			<a href="cadastrar.php">
+			<a href="app/services/cadastrar.php">
 				<button class="btn btn-primary button">
 					Cadastrar Cidade
 				</button>

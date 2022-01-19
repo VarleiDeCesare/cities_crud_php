@@ -1,5 +1,5 @@
 <?php
-require __DIR__.'/vendor/autoload.php';
+require realpath($_SERVER["DOCUMENT_ROOT"])."\\vendor\\autoload.php";
 
 define('TITLE', 'Editar Cidade');
 define('TITLE_BUTTON', 'Editar');
@@ -21,11 +21,10 @@ if(isset($_POST['name'],$_POST['uf'])){
 	$cidade->uf = $_POST['uf'];
 	$cidade->atualizar();
 
-	header("location: index.php?status=success");
+	header("location: \index.php?status=success");
 	exit();
 }
 
-
-include __DIR__.'/includes/header.php';
-include __DIR__.'/includes/formulario.php';
-include __DIR__.'/includes/footer.php';
+include realpath($_SERVER["DOCUMENT_ROOT"])."\\includes\\header.php";
+include realpath($_SERVER["DOCUMENT_ROOT"])."\\includes\\formulario.php";
+include realpath($_SERVER["DOCUMENT_ROOT"])."\\includes\\footer.php";

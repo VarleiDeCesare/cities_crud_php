@@ -3,7 +3,6 @@
 namespace App\Entity;
 
 use App\Db\Database;
-use Cassandra\Date;
 date_default_timezone_set("America/Sao_Paulo");
 class Cidade{
 	public $id;

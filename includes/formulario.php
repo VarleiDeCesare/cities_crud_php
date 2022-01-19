@@ -1,5 +1,5 @@
 <main>
-	<h2 class="subtitulo"><?= TITLE?></h2>
+	<h2 class="subtitulo text-center"><?= TITLE?></h2>
 
 	<div class="container">
 		<div class="row d-flex justify-content-center">
@@ -16,7 +16,6 @@
 							$estados = array(
 								"AC" => "Acre",
 								"AL" => "Alagoas",
-
 								"AP" => "Amapá",
 								"AM" => "Amazonas",
 								"BA" => "Bahia",
