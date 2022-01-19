@@ -1,22 +1,23 @@
 <?php
-require __DIR__.'/vendor/autoload.php';
+
+require __DIR__ . './vendor/autoload.php';
+
 use \App\Entity\Cidade;
+
 define('TITLE', 'Cadastrar Cidade');
 define('TITLE_BUTTON', 'Cadastrar');
 
 $cidade = New Cidade;
 
-if(isset($_POST['name'],$_POST['uf'])){
-
+if(isset($_POST['name'])){
 	$cidade->name = $_POST['name'];
 	$cidade->uf = $_POST['uf'];
 	$cidade->cadastrar();
-
 	header("location: index.php?status=success");
 	exit;
 }
 
 
-include __DIR__.'/includes/header.php';
-include __DIR__.'/includes/formulario.php';
-include __DIR__.'/includes/footer.php';
+include __DIR__ . '/includes/header.php';
+include __DIR__ . '/includes/formulario.php';
+include __DIR__ . '/includes/footer.php';

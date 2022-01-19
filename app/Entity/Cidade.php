@@ -3,28 +3,30 @@
 namespace App\Entity;
 
 use App\Db\Database;
-
+use Cassandra\Date;
+date_default_timezone_set("America/Sao_Paulo");
 class Cidade{
 	public $id;
     public $name;
     public $uf;
 
     public function cadastrar(){
+
         $obDatabase = new Database('cities');
+			$this->id = $obDatabase->insert([
+				'name' => $this->name,
+				'uf' => $this->uf,
+				'created_at' => date('y-m-d h:m:s')
+			]);
 
-		//fixme pode ser aqui a bomba
-		$this->id = $obDatabase->insert([
-			'name' => $this->name,
-			'uf' => $this->uf
-		]);
-
-		return true;
+			return true;
     }
 
 	public function atualizar(){
 		return (new Database('cities'))->update('id = '.$this->id,[
 			'name' => $this->name,
-			'uf' => $this->uf
+			'uf' => $this->uf,
+			'updated_at'  => date('y-m-d h:m:s')
 		]);
 	}
 

@@ -1,57 +1,81 @@
-
 <main>
 	<section>
-		<a href="cadastrar.php">
-			<button class="btn btn-primary">
-				Cadastrar Cidade
-			</button>
-		</a>
-	</section>
-	<section>
 		<?php
-		if($cidades){
-		?>
+		if ($cidades) {
+			?>
 			<table class="table">
 				<thead class="thead-light">
 					<tr>
 						<th scope="col">Nome da Cidade</th>
 						<th scope="col">UF</th>
 						<th scope="col">Data de Criação</th>
-						<th scope="col" style="text-align: center">Ações</th>
+						<th scope="col">Data de Atualização</th>
+						<th scope="col text-center">Ações</th>
 					</tr>
 				</thead>
 				<tbody>
 					<?php
-					foreach ($cidades as $cidade){
-					?>
-						<tr >
-							<td><h4><?= $cidade->name?></h4></td>
-							<td><h4><?= $cidade->uf?></h4></td>
-							<td><h4><?= date('d/m/Y', strtotime($cidade->created_at))?></h4></td>
-							<td style="text-align: center">
-								<a href="editar.php?id=<?= $cidade->id?>">
+					foreach ($cidades as $cidade) {
+						?>
+						<tr>
+							<td><h4><?= $cidade->name ?></h4></td>
+							<td><h4><?= $cidade->uf ?></h4></td>
+							<td><h4><?= date('d/m/Y', strtotime($cidade->created_at)) ?></h4></td>
+							<td><h4><?= $cidade->updated_at ? date('d/m/Y à\s h\h m\m s\s', strtotime($cidade->updated_at)) : '' ?></h4></td>
+							<td class="text-center">
+								<a href="editar.php?id=<?= $cidade->id ?>">
 									<button class="btn btn-primary">
 										Editar
 									</button>
 								</a>
-								<a href="excluir.php?id=<?= $cidade->id?>">
+								<a href="excluir.php?id=<?= $cidade->id ?>">
 									<button class="btn btn-danger">
 										Excluir
 									</button>
 								</a>
 							</td>
 						</tr>
-					<?php
+						<?php
 					}
 					?>
 				</tbody>
 			</table>
-		<?php
-		}else{
+			<?php
+		} else {
 			?>
-			<h2 style="margin-top: 10px">Não há Cidades Cadastradas</h2>
-		<?php
+			<div class="text-center no-data">
+				<h2 class="mt-3">Não há Cidades Cadastradas</h2>
+			</div>
+			<?php
 		}
 		?>
+		<div class="text-center">
+			<a href="cadastrar.php">
+				<button class="btn btn-primary button">
+					Cadastrar Cidade
+				</button>
+			</a>
+		</div>
+		<div class="text-center">
+			<?php
+			$status = '';
+			if (isset($_GET['status'])) {
+				$status = $_GET['status'];
+				if ($status === 'success') {
+					?>
+					<div class="alert alert-success">
+						Ação executada com sucesso
+					</div>
+					<?php
+				} else {
+					?>
+					<div class="alert alert-danger">
+						Falha ao executar a ação.
+					</div>
+					<?php
+				}
+			}
+			?>
+		</div>
 	</section>
 </main>
